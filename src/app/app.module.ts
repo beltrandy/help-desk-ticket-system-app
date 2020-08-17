@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Store } from 'store';
 
+// feature modules
+import { AuthModule } from '../auth/auth.module';
+
 // containers
 import { AppComponent } from './containers/app/app.component';
 
@@ -14,6 +17,7 @@ export const ROUTES: Routes = [];
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
+    AuthModule
   ],
   declarations: [
     AppComponent,
