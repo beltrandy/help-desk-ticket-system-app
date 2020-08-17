@@ -1,0 +1,15 @@
+# Node
+node_modules
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Package Managers
+npm-debug.log
+
+# Build
+build
+vendor/*-manifest.json
