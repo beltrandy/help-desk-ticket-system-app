@@ -23,6 +23,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
               formControlName="password">
           </label>
 
+          <div class="error" *ngIf="emailFormat">
+            Invalid email format
+          </div>
+
+          <div class="error" *ngIf="passwordInvalid">
+            Password is required
+          </div>
+
+          <ng-content select=".error"></ng-content>
+
           <div class="auth-form__action">
             <ng-content select="button"></ng-content>
           </div>
@@ -50,5 +60,15 @@ export class AuthFormComponent {
       this.submitted.emit(this.form);
     }
   }
-  
+
+  get passwordInvalid() {
+    const control = this.form.get('password');
+    return control.hasError('required') && control.touched;
+  }
+
+  get emailFormat() {
+    const control = this.form.get('email');
+    return control.hasError('email') && control.touched;
+  }
+
 }
