@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 
 import { User } from '../../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: "app-header",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["app-header.component.scss"],
   template: `
     <div class="app-header">
@@ -32,5 +33,5 @@ export class AppHeaderComponent {
   logoutUser() {
     this.logout.emit();
   }
-  
+
 }
