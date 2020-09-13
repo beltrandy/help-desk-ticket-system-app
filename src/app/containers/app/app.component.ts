@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,7 +18,7 @@ import { AuthService, User } from '../../../auth/shared/services/auth/auth.servi
     </div>
   `
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   user$: Observable<User>;
   subscription: Subscription;
@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.authService.auth$.subscribe();
     this.user$ = this.store.select<User>('user');
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
