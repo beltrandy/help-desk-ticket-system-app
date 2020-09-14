@@ -17,6 +17,13 @@ import { AuthService, User } from '../../../auth/shared/services/auth/auth.servi
         [user]="user$ | async"
         (logout)="onLogout()">
       </app-header>
+      <app-nav
+        *ngIf="(user$ | async)?.authenticated"
+        [user]="user$ | async">
+      </app-nav>
+      <div class="wrapper">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   `
 })
