@@ -21,12 +21,12 @@ export const ROUTES: Routes = [
 ];
 
 export const firebaseConfig: FirebaseAppConfig = {
-  apiKey: "AIzaSyAsHHTjlzCIRDzojJg9Em-jMnPcx-2sCS4",
-  authDomain: "hdts-app.firebaseapp.com",
-  databaseURL: "https://hdts-app.firebaseio.com",
-  projectId: "hdts-app",
-  storageBucket: "hdts-app.appspot.com",
-  messagingSenderId: "658584982023"
+  apiKey: "AIzaSyDDbk3x3zF_Oah34PP_cHrtIr7rZsxmjkI",
+  authDomain: "hdts-application.firebaseapp.com",
+  databaseURL: "https://hdts-application.firebaseio.com",
+  projectId: "hdts-application",
+  storageBucket: "hdts-application.appspot.com",
+  messagingSenderId: "230861801875"
 };
 
 @NgModule({
