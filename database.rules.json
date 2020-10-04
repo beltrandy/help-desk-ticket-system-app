@@ -6,7 +6,7 @@
         ".write": "$uid === auth.uid",
         "roles": {
           ".read": true,
-          ".write": true 
+          ".write": true
         }
       }
     },
