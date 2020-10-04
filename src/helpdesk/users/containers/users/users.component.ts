@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     styleUrls: ['users.component.scss'],
     template: `
         <div>
-            
+            users
         </div>
     `
 })

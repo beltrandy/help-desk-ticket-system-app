@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-export const ROUTES: Routes = [];
+import { AuthGuard } from '../auth/shared/guards/auth.guard';
+
+export const ROUTES: Routes = [
+  { path: 'users', canActivate: [AuthGuard], loadChildren: './users/users.module#UsersModule' },
+];
 
 @NgModule({
   imports: [

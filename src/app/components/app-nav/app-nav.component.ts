@@ -10,8 +10,8 @@ import { User } from '../../../auth/shared/services/auth/auth.service';
     <div class="app-nav">
       <div class="wrapper">
         <a routerLink="incidents" routerLinkActive="active">Incidents</a>
-        <a routerLink="incidents" routerLinkActive="active">Callers</a>
-        <a routerLink="callers" routerLinkActive="active">Admin</a>
+        <a routerLink="callers" routerLinkActive="active">Callers</a>
+        <a routerLink="users" routerLinkActive="active">Users</a>
       </div>
     </div>
   `
