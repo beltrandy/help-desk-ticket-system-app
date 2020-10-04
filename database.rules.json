@@ -4,7 +4,7 @@
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid",
-        "roles": {
+        "role": {
           ".read": true,
           ".write": true
         }
