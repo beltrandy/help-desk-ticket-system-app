@@ -23,7 +23,7 @@ export interface User {
 }
 
 @Injectable()
-export class CallersService {
+export class UsersService {
   users$: Observable<User[]> = this.db
     .list(`users`)
     .do((next) => this.store.set("users", next));
