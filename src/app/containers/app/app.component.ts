@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from 'store';
 
-import { AuthService, User } from '../../../auth/shared/services/auth/auth.service';
+import { AuthService, CurrentUser } from '../../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,12 @@ import { AuthService, User } from '../../../auth/shared/services/auth/auth.servi
   template: `
     <div>
       <app-header
-        [user]="user$ | async"
+        [currentUser]="currentUser$ | async"
         (logout)="onLogout()">
       </app-header>
       <app-nav
-        *ngIf="(user$ | async)?.authenticated"
-        [user]="user$ | async">
+        *ngIf="(currentUser$ | async)?.authenticated"
+        [currentUser]="currentUser$ | async">
       </app-nav>
       <div class="wrapper">
         <router-outlet></router-outlet>
@@ -29,7 +29,7 @@ import { AuthService, User } from '../../../auth/shared/services/auth/auth.servi
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  user$: Observable<User>;
+  currentUser$: Observable<CurrentUser>;
   subscription: Subscription;
 
   constructor(
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.authService.auth$.subscribe();
-    this.user$ = this.store.select<User>('user');
+    this.currentUser$ = this.store.select<CurrentUser>('currentUser');
   }
 
   ngOnDestroy() {

@@ -6,7 +6,7 @@ import "rxjs/add/operator/do";
 
 import { AngularFireAuth } from "angularfire2/auth";
 
-export interface User {
+export interface CurrentUser {
   email: string;
   uid: string;
   authenticated: boolean;
@@ -16,15 +16,15 @@ export interface User {
 export class AuthService {
   auth$ = this.af.authState.do((next) => {
     if (!next) {
-      this.store.set("user", null);
+      this.store.set("currentUser", null);
       return;
     }
-    const user: User = {
+    const currentUser: CurrentUser = {
       email: next.email,
       uid: next.uid,
-      authenticated: true,
+      authenticated: true
     };
-    this.store.set("user", user);
+    this.store.set("currentUer", currentUser);
   });
 
   constructor(
@@ -32,7 +32,7 @@ export class AuthService {
     private af: AngularFireAuth,
   ) {}
 
-  get user() {
+  get currentUser() {
     return this.af.auth.currentUser;
   }
 

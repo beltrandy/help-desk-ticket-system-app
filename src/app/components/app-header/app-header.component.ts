@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 
-import { User } from '../../../auth/shared/services/auth/auth.service';
+import { CurrentUser } from '../../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: "app-header",
@@ -25,7 +25,7 @@ import { User } from '../../../auth/shared/services/auth/auth.service';
 export class AppHeaderComponent {
 
   @Input()
-  user: User;
+  currentUser: CurrentUser;
 
   @Output()
   logout = new EventEmitter<any>();

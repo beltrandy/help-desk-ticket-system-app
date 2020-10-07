@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 
-import { User } from '../../../auth/shared/services/auth/auth.service';
+import { CurrentUser } from '../../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: "app-nav",
@@ -19,7 +19,7 @@ import { User } from '../../../auth/shared/services/auth/auth.service';
 export class AppNavComponent {
 
   @Input()
-  user: User;
+  currentUser: CurrentUser;
 
   constructor() {
   }
