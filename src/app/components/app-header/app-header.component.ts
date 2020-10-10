@@ -15,7 +15,7 @@ import { CurrentUser } from '../../../auth/shared/services/auth/auth.service';
         </div>
         <div 
           class="app-header__user-info"
-          *ngIf="user?.authenticated">
+          *ngIf="currentUser?.authenticated">
           <span (click)="logoutUser()"></span>
         </div>
       </div>

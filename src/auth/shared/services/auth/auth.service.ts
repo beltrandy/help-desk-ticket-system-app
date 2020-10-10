@@ -24,7 +24,8 @@ export class AuthService {
       uid: next.uid,
       authenticated: true
     };
-    this.store.set("currentUer", currentUser);
+    //console.log(currentUser);
+    this.store.set("currentUser", currentUser);
   });
 
   constructor(

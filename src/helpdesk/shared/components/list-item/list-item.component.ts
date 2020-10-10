@@ -10,8 +10,8 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 
         <p
           class="list-item__name"
-          *ngIf="item.name; else showIncident">
-          {{ item.name }}
+          *ngIf="item.firstName; else showIncident">
+          {{ item.firstName }}
         </p>
         <ng-template #showIncident>
           {{ item.description }}
@@ -70,7 +70,7 @@ export class ListItemComponent {
   getRoute(item: any) {
     let currentType = '';
 
-    if (item.email) {
+    if (item.firstName) {
       currentType = 'users'
     } else {
       currentType = 'incidents'

@@ -11,15 +11,19 @@ import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
 
 import { AuthService } from "../../../../auth/shared/services/auth/auth.service";
+import { FormGroup } from '@angular/forms';
 
 export interface User {
-  email: string;
-  uid: string;
-  role: string;
   firstName: string;
   lastName: string;
+  email: string;
+  password?: string;
+  role: string;
   title: string;
   office: string;
+  uid?: string;
+  $key: string;
+  $exists: () => boolean;
 }
 
 @Injectable()
@@ -44,16 +48,39 @@ export class UsersService {
     return this.store
       .select<User[]>("users")
       .filter(Boolean)
-      .map((users) => users.find((user: User) => user.uid === uid));
+      .map((users) => users.find((user: User) => user.$key === uid));
   }
 
-  createUser(email: string, password: string) {
+  createUser(userObj: User) {
     return this.af.auth
-      .createUserWithEmailAndPassword(email, password);
+      .createUserWithEmailAndPassword(userObj.email, userObj.password)
+      .then(user => {
+        // Save user here.
+        return this.db.object(`users/${user.uid}`).set({
+          email: user.email,
+          uid: user.uid,
+          firstName: userObj.firstName,
+          lastName: userObj.lastName,
+          role: userObj.role,
+          title: userObj.title,
+          office: userObj.office
+        });
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        console.log("FAIL at createUser .then()");
+      });
   }
 
   saveUserData(user: User) {
-    return this.db.list(`users`).push(user);
+    //return this.db.list(`users`).push(user);
+    return this.db.object(`users/${user.uid}`).set({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      title: user.title,
+      office: user.office
+    });
   }
 
   updateUser(uid: string, user: User) {

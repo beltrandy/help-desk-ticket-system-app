@@ -15,7 +15,7 @@ import { UsersService, User } from '../../../shared/services/users/users.service
     <div class="users__title">
       <h1>
         <img src="/img/user.svg">
-        All Callers
+        All Users
       </h1>
       <a 
         class="btn__add"
@@ -32,7 +32,7 @@ import { UsersService, User } from '../../../shared/services/users/users.service
       <list-item
         *ngFor="let user of users"
         [item]="user"
-        (remove)="removeCaller($event)">
+        (remove)="removeUser($event)">
       </list-item>
     </div>
     <ng-template #loading>

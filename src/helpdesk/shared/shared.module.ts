@@ -9,11 +9,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ListItemComponent } from './components/list-item/list-item.component';
 
 // services
-import { CallersService } from './services/callers/callers.service';
-import { IncidentsService } from './services/incidents/incidents.service';
+import { UsersService } from './services/users/users.service';
+//import { IncidentsService } from './services/incidents/incidents.service';
 
 // pipes
-import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
+//import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
 
 @NgModule({
   imports: [
@@ -22,12 +22,10 @@ import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
     AngularFireDatabaseModule
   ],
   declarations: [
-    ListItemComponent,
-    IncidentFilterPipe
+    ListItemComponent
   ],
   exports: [
-    ListItemComponent,
-    IncidentFilterPipe
+    ListItemComponent
   ]
 })
 export class SharedModule {
@@ -35,8 +33,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        CallersService,
-        IncidentsService
+        UsersService
       ]
     };
   }
