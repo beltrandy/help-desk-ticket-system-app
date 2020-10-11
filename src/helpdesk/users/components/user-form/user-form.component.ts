@@ -56,10 +56,14 @@ import { UsersService, User } from '../../../shared/services/users/users.service
 
               <label>
                 <h3>Role</h3>
-                <input
-                type="text"
-                formControlName="role">
-                <div class="error" *ngIf="required">
+                <select formControlName="role">
+                  <option
+                    *ngFor="let role of roles"
+                    [value]="role">
+                    {{role}}
+                  </option>
+                </select>
+                <div class="error" *ngIf="roleRequired">
                     Role is required
                 </div>
               </label>
@@ -136,6 +140,8 @@ import { UsersService, User } from '../../../shared/services/users/users.service
 export class UserFormComponent implements OnChanges {
     toggled = false;
     exists = false;
+
+    roles = [ 'caller', 'agent', 'admin' ];
   
     @Input()
     user: User;
