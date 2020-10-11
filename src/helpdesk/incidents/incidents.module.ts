@@ -10,10 +10,12 @@ import { SharedModule } from '../shared/shared.module';
 
 // containers
 import { IncidentsComponent } from './containers/incidents/incidents.component';
-//import { IncidentComponent } from './containers/incident/incident.component';
+import { IncidentComponent } from './containers/incident/incident.component';
 
 export const ROUTES: Routes = [
-    { path: '', component: IncidentsComponent }
+    { path: '', component: IncidentsComponent },
+    { path: 'new', component: IncidentComponent },
+    { path: ':id', component: IncidentComponent }
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ export const ROUTES: Routes = [
         SharedModule
       ],
       declarations: [
-        IncidentsComponent
+        IncidentsComponent,
+        IncidentComponent
       ]
 })
 

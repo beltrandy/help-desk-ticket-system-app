@@ -10,7 +10,7 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 
 // services
 import { UsersService } from './services/users/users.service';
-//import { IncidentsService } from './services/incidents/incidents.service';
+import { IncidentsService } from './services/incidents/incidents.service';
 
 // pipes
 //import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
@@ -33,7 +33,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        UsersService
+        UsersService,
+        IncidentsService
       ]
     };
   }
