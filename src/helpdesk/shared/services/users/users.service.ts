@@ -55,7 +55,6 @@ export class UsersService {
     return this.af.auth
       .createUserWithEmailAndPassword(userObj.email, userObj.password)
       .then(user => {
-        // Save user here.
         return this.db.object(`users/${user.uid}`).set({
           email: user.email,
           uid: user.uid,
@@ -67,20 +66,8 @@ export class UsersService {
         });
       })
       .catch(function(error) {
-        // Handle Errors here.
-        console.log("FAIL at createUser .then()");
+        console.log(error);
       });
-  }
-
-  saveUserData(user: User) {
-    //return this.db.list(`users`).push(user);
-    return this.db.object(`users/${user.uid}`).set({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      role: user.role,
-      title: user.title,
-      office: user.office
-    });
   }
 
   updateUser(uid: string, user: User) {

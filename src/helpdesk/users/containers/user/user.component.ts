@@ -70,7 +70,6 @@ export class UserComponent implements OnInit, OnDestroy {
     async addUser(event: User) {
         try {
             await this.usersService.createUser(event);
-            //await this.usersService.saveUserData(event);
             this.backToUsers();
         } catch (err) {
             this.error = err.message;
@@ -78,6 +77,7 @@ export class UserComponent implements OnInit, OnDestroy {
     }
   
     async updateUser(event: User) {
+      console.log("User component - User passed in to updateUser(): ", event);
       const key = this.route.snapshot.params.id;
       await this.usersService.updateUser(key, event);
       this.backToUsers();

@@ -52,9 +52,6 @@ import { UsersService, User } from '../../../shared/services/users/users.service
                 <input
                 type="password"
                 formControlName="password">
-                <div class="error" *ngIf="passwordInvalid">
-                    Password is required
-                </div>
               </label>
 
               <label>
@@ -155,7 +152,7 @@ export class UserFormComponent implements OnChanges {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', Validators.email],
-        password: ['', Validators.required],
+        password: '',
         role: ['', Validators.required],
         title: '',
         office: ''
@@ -192,10 +189,10 @@ export class UserFormComponent implements OnChanges {
         return control.hasError('email') && control.touched;
       }
 
-      get passwordInvalid() {
-        const control = this.form.get('password');
-        return control.hasError('required') && control.touched;
-      }
+      // get passwordInvalid() {
+      //   const control = this.form.get('password');
+      //   return control.hasError('required') && control.touched;
+      // }
 
       get roleRequired() {
         return (
@@ -211,7 +208,9 @@ export class UserFormComponent implements OnChanges {
       }
     
       updateUser() {
+        console.log("Is form valid: ", this.form.valid);
         if (this.form.valid) {
+          console.log("Form is valid");
           this.update.emit(this.form.value);
         }
       }
