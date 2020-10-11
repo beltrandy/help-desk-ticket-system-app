@@ -5,10 +5,7 @@ import { Store } from "store";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
-import {
-  IncidentsService,
-  Incident,
-} from "../../../shared/services/incidents/incidents.service";
+import { IncidentsService, Incident } from "../../../shared/services/incidents/incidents.service";
 
 @Component({
   selector: "incidents",
