@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 // components
-//import { IncidentFormComponent } from './components/incident-form/incident-form.component';
+import { IncidentFormComponent } from './components/incident-form/incident-form.component';
 
 // containers
 import { IncidentsComponent } from './containers/incidents/incidents.component';
@@ -27,7 +27,8 @@ export const ROUTES: Routes = [
       ],
       declarations: [
         IncidentsComponent,
-        IncidentComponent
+        IncidentComponent,
+        IncidentFormComponent
       ]
 })
 

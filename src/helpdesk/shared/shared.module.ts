@@ -13,7 +13,7 @@ import { UsersService } from './services/users/users.service';
 import { IncidentsService } from './services/incidents/incidents.service';
 
 // pipes
-//import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
+import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
 
 @NgModule({
   imports: [
@@ -22,10 +22,12 @@ import { IncidentsService } from './services/incidents/incidents.service';
     AngularFireDatabaseModule
   ],
   declarations: [
-    ListItemComponent
+    ListItemComponent,
+    IncidentFilterPipe
   ],
   exports: [
-    ListItemComponent
+    ListItemComponent,
+    IncidentFilterPipe
   ]
 })
 export class SharedModule {

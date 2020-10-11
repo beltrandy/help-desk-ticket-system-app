@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
 
         <div class="incident-form__title">
           <label>
-            <h3>Incident title/h3>
+            <h3>Incident title</h3>
             <input 
               type="text"
               formControlName="title">
@@ -185,7 +185,7 @@ export class IncidentFormComponent implements OnChanges {
     form = this.fb.group({
         caller: ['', Validators.required],
         agent: '',
-        priority: this.priorities[1],
+        priority: this.priorities[1].level,
         status: this.statuses[0],
         title: ['', Validators.required],
         description: ['', Validators.required],
