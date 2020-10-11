@@ -14,7 +14,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
           {{ item.firstName }}
         </p>
         <ng-template #showIncident>
-          {{ item.description }}
+          {{ item.title }}
         </ng-template>
 
       </a>

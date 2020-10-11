@@ -18,7 +18,7 @@ export interface Incident {
   description: string;
   workNotes: string;
   closeNotes: string;
-  timestamp: number;
+  created: number;
   $key: string;
   $exists: () => boolean;
 }

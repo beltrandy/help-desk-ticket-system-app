@@ -62,7 +62,7 @@ export class IncidentComponent implements OnInit, OnDestroy {
     }
   
     async addIncident(event: Incident) {
-      event.timestamp = new Date().getTime();
+      event.created = new Date().getTime();
       await this.incidentsService.addIncident(event);
       this.backToIncidents();
     }
