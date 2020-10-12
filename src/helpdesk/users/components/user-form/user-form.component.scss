@@ -123,6 +123,32 @@
         color: #aaa;
       }
     }
+    select {
+      text-rendering: auto;
+      color: #545e6f;
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+      appearance: menulist;
+      box-sizing: border-box;
+      align-items: center;
+      white-space: pre;
+      -webkit-rtl-ordering: logical;
+      background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+      cursor: default;
+      margin: 0em;
+      padding: 10px 15px;
+      font: 16px Arial;
+      border-radius: 3px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(209, 222, 235);
+      border-image: initial;
+    }
     .button {
       cursor: pointer;
       outline: 0;

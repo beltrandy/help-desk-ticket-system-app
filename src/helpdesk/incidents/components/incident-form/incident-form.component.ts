@@ -26,20 +26,16 @@ import { Observable } from 'rxjs/Observable';
           </label>
         </div>
 
-        <div class="incident-form__fields">
-            <label>
-                <h3>Incident Description</h3>
-                <textarea
-                    formControlName="description">
-                </textarea>
-                <div class="error" *ngIf="descRequired">
-                    Incident description is required
-                </div>
-            </label>
-        </div>
-
         <div class="incident-form__details">
-
+            <div class="incident-form__fields">
+              <label>
+                <h3>Incident Description</h3>
+                <textarea formControlName="description"> </textarea>
+                <div class="error" *ngIf="descRequired">
+                  Incident description is required
+                </div>
+              </label>
+            </div>
             <div class="incident-form__fields">
               <label>
                 <h3>Caller</h3>
@@ -60,9 +56,9 @@ import { Observable } from 'rxjs/Observable';
                 <select formControlName="agent">
                   <option value="">Select agent</option>
                   <option
-                    *ngFor="let user of users$ | async"
-                    [value]="user.uid">
-                    {{ user.lastName }}, {{ user.firstName }}
+                    *ngFor="let agent of agents$ | async"
+                    [value]="agent.uid">
+                    {{ agent.lastName }}, {{ agent.firstName }}
                   </option>
                 </select>
               </label>
@@ -160,6 +156,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class IncidentFormComponent implements OnChanges {
     users$: Observable<User[]>;
+    agents$: Observable<User[]>;
     toggled = false;
     exists = false;
 
@@ -198,6 +195,7 @@ export class IncidentFormComponent implements OnChanges {
         usersService: UsersService
       ) {
           this.users$ = usersService.users$;
+          this.agents$ = usersService.agents$;
       }
 
       ngOnChanges(changes: SimpleChanges) {

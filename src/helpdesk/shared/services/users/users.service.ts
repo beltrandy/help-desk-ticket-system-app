@@ -32,6 +32,12 @@ export class UsersService {
     .list(`users`)
     .do((next) => this.store.set("users", next));
 
+  agents$: Observable<User[]> = this.db
+    .list(`users`, { query: {
+      orderByChild: 'role',
+      equalTo: 'agent'
+    } });
+
   constructor(
     private store: Store,
     private af: AngularFireAuth,
