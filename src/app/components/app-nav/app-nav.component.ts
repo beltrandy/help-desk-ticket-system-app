@@ -10,8 +10,18 @@ import { CurrentUser } from '../../../auth/shared/services/auth/auth.service';
     <div class="app-nav">
       <div class="wrapper">
         <a routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-        <a routerLink="incidents" routerLinkActive="active">Incidents</a>
-        <a routerLink="users" routerLinkActive="active">Users</a>
+        <a 
+          *ngIf="currentUser.role === 'agent' || currentUser.role === 'admin'"
+          routerLink="incidents" 
+          routerLinkActive="active">
+            Incidents
+        </a>
+        <a 
+          *ngIf="currentUser.role === 'admin'"
+          routerLink="users" 
+          routerLinkActive="active">
+            Users
+        </a>
       </div>
     </div>
   `
