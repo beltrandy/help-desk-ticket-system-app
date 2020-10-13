@@ -67,7 +67,9 @@ import { UsersService, User } from '../../../shared/services/users/users.service
                     Role is required
                 </div>
               </label>
-
+            </div>
+            
+            <div class="user-form__fields">
               <label>
                 <h3>Title</h3>
                 <input

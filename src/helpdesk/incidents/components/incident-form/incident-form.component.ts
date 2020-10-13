@@ -62,6 +62,8 @@ import { Observable } from 'rxjs/Observable';
                   </option>
                 </select>
               </label>
+            </div>
+            <div class="incident-form__fields">
               <label>
                 <h3>Priority</h3>
                 <select formControlName="priority">
