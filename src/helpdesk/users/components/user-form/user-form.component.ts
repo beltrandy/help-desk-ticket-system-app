@@ -79,9 +79,13 @@ import { UsersService, User } from '../../../shared/services/users/users.service
 
               <label>
                 <h3>Office</h3>
-                <input
-                type="text"
-                formControlName="office">
+                <select formControlName="office">
+                  <option
+                    *ngFor="let office of offices"
+                    [value]="office">
+                    {{ office }}
+                  </option>
+                </select>
               </label>
             </div>
 
@@ -144,6 +148,7 @@ export class UserFormComponent implements OnChanges {
     exists = false;
 
     roles = [ 'caller', 'agent', 'admin' ];
+    offices = [ 'Los Angeles', 'Dallas', 'Boston' ];
   
     @Input()
     user: User;
@@ -163,7 +168,7 @@ export class UserFormComponent implements OnChanges {
         password: '',
         role: ['', Validators.required],
         title: '',
-        office: ''
+        office: this.offices[0]
       });
 
       constructor(
