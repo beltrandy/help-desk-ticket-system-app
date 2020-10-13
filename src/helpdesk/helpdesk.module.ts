@@ -6,11 +6,30 @@ import { SharedModule } from './shared/shared.module';
 
 // guards
 import { AuthGuard } from '../auth/shared/guards/auth.guard';
+import { RoleGuard } from '../auth/shared/guards/role.guard';
 
 export const ROUTES: Routes = [
-  { path: 'dashboard', canActivate: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
-  { path: 'users', canActivate: [AuthGuard], loadChildren: './users/users.module#UsersModule' },
-  { path: 'incidents', canActivate: [AuthGuard], loadChildren: './incidents/incidents.module#IncidentsModule' }
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
+  },
+  {
+    path: 'incidents',
+    canActivate: [AuthGuard,RoleGuard],
+    data: {
+      allowedRoles: ['admin', 'agent']
+    },
+    loadChildren: './incidents/incidents.module#IncidentsModule'
+  },
+  {
+    path: 'users',
+    canActivate: [AuthGuard,RoleGuard],
+    data: {
+      allowedRoles: ['admin']
+    },
+    loadChildren: './users/users.module#UsersModule'
+  }
 ];
 
 @NgModule({
