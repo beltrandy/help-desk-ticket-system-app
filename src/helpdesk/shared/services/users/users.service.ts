@@ -11,7 +11,6 @@ import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
 
 import { AuthService } from "../../../../auth/shared/services/auth/auth.service";
-import { FormGroup } from '@angular/forms';
 
 export interface User {
   firstName: string;
@@ -29,7 +28,9 @@ export interface User {
 @Injectable()
 export class UsersService {
   users$: Observable<User[]> = this.db
-    .list(`users`)
+    .list(`users`, { query: {
+      orderByChild: 'lastName'
+    } })
     .do((next) => this.store.set("users", next));
 
   agents$: Observable<User[]> = this.db
