@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthGuard } from '../auth/shared/guards/auth.guard';
 
 export const ROUTES: Routes = [
+  { path: 'dashboard', canActivate: [AuthGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: 'users', canActivate: [AuthGuard], loadChildren: './users/users.module#UsersModule' },
   { path: 'incidents', canActivate: [AuthGuard], loadChildren: './incidents/incidents.module#IncidentsModule' }
 ];

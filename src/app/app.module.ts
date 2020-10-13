@@ -17,7 +17,7 @@ import { AppNavComponent } from './components/app-nav/app-nav.component';
 
 // routes
 export const ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'incidents' }
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
 ];
 
 @NgModule({
