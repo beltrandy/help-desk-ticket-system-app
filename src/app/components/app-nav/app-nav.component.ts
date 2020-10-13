@@ -9,8 +9,8 @@ import { CurrentUser } from '../../../auth/shared/services/auth/auth.service';
   template: `
     <div class="app-nav">
       <div class="wrapper">
+        <a routerLink="dashboard" routerLinkActive="active">Dashboard</a>
         <a routerLink="incidents" routerLinkActive="active">Incidents</a>
-        <a routerLink="callers" routerLinkActive="active">Callers</a>
         <a routerLink="users" routerLinkActive="active">Users</a>
       </div>
     </div>
