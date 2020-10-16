@@ -26,7 +26,9 @@ export interface Incident {
 @Injectable()
 export class IncidentsService {
   incidents$: Observable<Incident[]> = this.db
-    .list(`incidents`)
+    .list(`incidents`, { query: {
+      orderByChild: 'created'
+    } })
     .do((next) => this.store.set("incidents", next));
 
   constructor(private store: Store, private db: AngularFireDatabase) {}
