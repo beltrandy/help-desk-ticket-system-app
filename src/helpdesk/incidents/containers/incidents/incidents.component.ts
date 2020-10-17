@@ -26,10 +26,10 @@ import { IncidentsService, Incident } from "../../../shared/services/incidents/i
         <input
           #search
           (keydown)="updateSearch(search.value)"
-          placeholder="search text goes here"
+          placeholder="Enter search text"
         />
       </div>
-      <div *ngIf="incidents$ | async as incidents; else loading">
+      <div *ngIf="(incidents$ | async)?.reverse() as incidents; else loading">
         <div class="message" *ngIf="!incidents.length">
           <img src="/img/face.svg" />
           No incidents, add a new incident to start
