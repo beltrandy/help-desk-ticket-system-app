@@ -8,19 +8,15 @@ import { Store } from 'store';
 import { SharedModule } from '../shared/shared.module';
 
 // components
-//import { IncidentFormComponent } from '../incidents/components/incident-form/incident-form.component';
 import { DashListItemComponent } from '../dashboard/components/dash-list-item/dash-list-item.component';
 
 // containers
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
-//import { IncidentsComponent } from '../incidents/containers/incidents/incidents.component';
-//import { IncidentComponent } from '../incidents/containers/incident/incident.component';
+import { DashIncidentComponent } from './containers/dash-incident/dash-incident.component';
 
 export const ROUTES: Routes = [
     { path: '', component: DashboardComponent },
-    //{ path: '', component: IncidentsComponent },
-    //{ path: 'new', component: IncidentComponent },
-    //{ path: ':id', component: IncidentComponent }
+    { path: ':id', component: DashIncidentComponent }
 ];
 
 @NgModule({
@@ -32,10 +28,8 @@ export const ROUTES: Routes = [
       ],
       declarations: [
         DashboardComponent,
-        DashListItemComponent
-        //IncidentsComponent,
-        //IncidentComponent,
-        //IncidentFormComponent
+        DashListItemComponent,
+        DashIncidentComponent
       ]
 })
 
