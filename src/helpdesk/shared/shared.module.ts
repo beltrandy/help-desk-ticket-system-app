@@ -14,6 +14,7 @@ import { IncidentsService } from './services/incidents/incidents.service';
 
 // pipes
 import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
+import { DashboardFilterPipe } from './pipes/dashboardFilter.pipe';
 
 @NgModule({
   imports: [
@@ -23,11 +24,13 @@ import { IncidentFilterPipe } from './pipes/incidentFilter.pipe';
   ],
   declarations: [
     ListItemComponent,
-    IncidentFilterPipe
+    IncidentFilterPipe,
+    DashboardFilterPipe
   ],
   exports: [
     ListItemComponent,
-    IncidentFilterPipe
+    IncidentFilterPipe,
+    DashboardFilterPipe
   ]
 })
 export class SharedModule {
