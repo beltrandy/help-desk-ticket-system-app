@@ -10,7 +10,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
     <a [routerLink]="getRoute(item, user)">
 
         <p class="dash-list-item__name">
-          {{ item.title }}
+          Created: {{ item.created | date:'short' }} - {{ item.title }}
         </p>
 
     </a>

@@ -11,10 +11,10 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
         <p
           class="list-item__name"
           *ngIf="item.firstName; else showIncident">
-          {{ item.firstName }}
+          {{ item.lastName }}, {{ item.firstName }} - Role: {{ item.role }}
         </p>
         <ng-template #showIncident>
-          {{ item.title }}
+          Created: {{ item.created | date:'short' }} - {{ item.title }}
         </ng-template>
 
       </a>
