@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 
 import { IncidentsService, Incident } from '../../../shared/services/incidents/incidents.service';
+import { User, UsersService } from '../../../shared/services/users/users.service';
 
 @Component({
     selector: 'dash-incident',
@@ -43,14 +44,16 @@ import { IncidentsService, Incident } from '../../../shared/services/incidents/i
           <div class="dash-incident__fields">
             <label>
               <h3>Caller</h3>
-              <div class="dash-incident__fieldInfo">
-                {{ incident.caller }}
+              <div 
+                class="dash-incident__fieldInfo">
+                  {{ getAgentName(incident.caller) }}
               </div>
             </label>
             <label>
               <h3>Assigned Agent</h3>
-              <div class="dash-incident__fieldInfo">
-                  {{ incident.agent }}
+              <div 
+                class="dash-incident__fieldInfo">
+                  {{ getAgentName(incident.agent) }}
               </div>
             </label>
           </div>
@@ -109,21 +112,34 @@ import { IncidentsService, Incident } from '../../../shared/services/incidents/i
     `
 })
 export class DashIncidentComponent implements OnInit, OnDestroy {
-
+    usersById: any = {};
     incident$: Observable<Incident>;
+    users$: Observable<User[]>;
     subscription: Subscription;
     priority: string;
     
     constructor(
       private incidentsService: IncidentsService,
       private router: Router,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private usersService: UsersService
     ) {}
   
     ngOnInit() {
-      this.subscription = this.incidentsService.incidents$.subscribe();
-      this.incident$ = this.route.params
-        .switchMap(param => this.incidentsService.getIncident(param.id));
+        this.usersService.users$.subscribe((user: any) => {
+            user.forEach((_user: any) => {
+                this.usersById[_user.uid] = `${_user.lastName}, ${_user.firstName}`
+            });
+        })
+        console.log(this.usersById, "userById");
+        this.subscription = this.incidentsService.incidents$.subscribe();
+        this.incident$ = this.route.params
+            .switchMap(param => this.incidentsService.getIncident(param.id));
+    }
+
+    getAgentName(id: string) {
+        console.log(this.usersById,id);
+        return this.usersById[id];
     }
   
     ngOnDestroy() {
@@ -135,9 +151,9 @@ export class DashIncidentComponent implements OnInit, OnDestroy {
             this.priority = '1 - High'
         } else if (value === 2) {
             this.priority = '2 - Moderate'
-        } else (
+        } else {
             this.priority = '3 - Low'
-        )
+        }
 
         return this.priority
 
