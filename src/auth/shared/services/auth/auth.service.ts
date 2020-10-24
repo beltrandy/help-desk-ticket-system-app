@@ -29,7 +29,7 @@ export class AuthService {
         authenticated: true,
         role: snapshot.val()
       };
-      console.log("currentUser: ", currentUser);
+
       this.store.set('currentUser', currentUser);
     });
   });

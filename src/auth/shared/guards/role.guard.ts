@@ -32,7 +32,6 @@ export class RoleGuard implements CanActivate {
           }
         }
         
-        console.log("Role guard shows user has role: ",currentUser.role);
         if (!hasAllowedRole) {
             this.router.navigate(['/dashboard']);
         }

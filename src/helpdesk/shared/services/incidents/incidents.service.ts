@@ -44,7 +44,6 @@ export class IncidentsService {
   }
 
   addIncident(incident: Incident) {
-    console.log("Incident:", incident);
     return this.db.list(`incidents`).push(incident);
   }
 

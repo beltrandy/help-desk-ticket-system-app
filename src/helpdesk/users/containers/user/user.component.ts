@@ -77,7 +77,6 @@ export class UserComponent implements OnInit, OnDestroy {
     }
   
     async updateUser(event: User) {
-      console.log("User component - User passed in to updateUser(): ", event);
       const key = this.route.snapshot.params.id;
       await this.usersService.updateUser(key, event);
       this.backToUsers();

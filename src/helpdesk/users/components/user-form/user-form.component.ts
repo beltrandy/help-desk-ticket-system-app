@@ -221,9 +221,7 @@ export class UserFormComponent implements OnChanges {
       }
     
       updateUser() {
-        console.log("Is form valid: ", this.form.valid);
         if (this.form.valid) {
-          console.log("Form is valid");
           this.update.emit(this.form.value);
         }
       }

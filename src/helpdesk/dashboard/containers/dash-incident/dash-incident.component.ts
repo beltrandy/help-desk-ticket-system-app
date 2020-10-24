@@ -131,14 +131,13 @@ export class DashIncidentComponent implements OnInit, OnDestroy {
                 this.usersById[_user.uid] = `${_user.lastName}, ${_user.firstName}`
             });
         })
-        console.log(this.usersById, "userById");
+
         this.subscription = this.incidentsService.incidents$.subscribe();
         this.incident$ = this.route.params
             .switchMap(param => this.incidentsService.getIncident(param.id));
     }
 
     getAgentName(id: string) {
-        console.log(this.usersById,id);
         return this.usersById[id];
     }
   
